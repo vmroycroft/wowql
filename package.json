@@ -1,0 +1,26 @@
+{
+  "name": "wowql",
+  "version": "0.1.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "pi@192.168.1.226:/media/pi/repository/wowql.git"
+  },
+  "keywords": [],
+  "author": "Vanessa Roycroft",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-datasource-rest": "^0.7.0",
+    "apollo-server": "^2.6.6",
+    "axios": "^0.19.2",
+    "graphql": "^14.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
