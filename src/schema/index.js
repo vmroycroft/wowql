@@ -1,7 +1,5 @@
 const { gql } = require("apollo-server"),
-  wowSchema = require("./wow"),
-  poodlesSchema = require("./poodles"),
-  clusterHeadacheTrackerSchema = require("./clusterHeadacheTracker");
+  characterEquipmentSchema = require("./character-equipment");
 
 const linkSchema = gql`
   type Query {
@@ -12,9 +10,4 @@ const linkSchema = gql`
   }
 `;
 
-module.exports = [
-  linkSchema,
-  wowSchema,
-  poodlesSchema,
-  clusterHeadacheTrackerSchema
-];
+module.exports = [linkSchema, characterEquipmentSchema];

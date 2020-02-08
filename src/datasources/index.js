@@ -1,4 +1,3 @@
-const PoodlesApi = require("./AdministrationAPI"),
-  WowApi = require("./WowApi");
+const CharacterEquipment = require("./CharacterEquipment");
 
-module.exports = { PoodlesApi, WowApi };
+module.exports = { CharacterEquipment };

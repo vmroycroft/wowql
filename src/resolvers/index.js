@@ -1,5 +1,3 @@
-const poodlesResolvers = require('./poodles'),
-	clusterHeadacheTrackerResolvers = require('./clusterHeadacheTracker'),
-	wowResolvers = require('./wow');
+const characterEquipmentResolvers = require("./character-equipment");
 
-module.exports = [poodlesResolvers, clusterHeadacheTrackerResolvers, wowResolvers];
+module.exports = [characterEquipmentResolvers];

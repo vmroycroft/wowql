@@ -1,26 +1,26 @@
 const { ApolloServer } = require("apollo-server"),
   typeDefs = require("./schema"),
-  resolvers = require("./resolvers/wow"),
-  // resolvers = require("./resolvers"),
-  { PoodlesApi, WowApi } = require("./datasources");
+  resolvers = require("./resolvers"),
+  BlizzardApi = require("./BlizzardApi"),
+  { CharacterEquipment } = require("./datasources");
 
-// set up mongodb connection
-// require('./dbconfig.js');
+const blizzardApi = new BlizzardApi(),
+  dataSources = () => ({
+    characterEquipment: new CharacterEquipment(blizzardApi)
+  });
 
-// get the Blizzard application token
-getBlizzardToken();
+// start the app
+init();
 
-async function getBlizzardToken() {
-  const blizzardToken = await require("./wowApiConfig");
+async function init() {
+  // get the Blizzard application token
+  await blizzardApi.getApplicationToken();
 
   // set up apollo server for graphql api requests
   const server = new ApolloServer({
     typeDefs,
     resolvers,
-    dataSources: () => ({
-      poodlesApi: new PoodlesApi(),
-      wowApi: new WowApi(blizzardToken)
-    })
+    dataSources
   });
 
   server.listen().then(({ url }) => {
