@@ -4,6 +4,7 @@
 api_docs
 dist
 node_modules
+**/_backup/**
 
 # local env files
 .env.local
