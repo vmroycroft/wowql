@@ -1,6 +1,6 @@
 module.exports = {
   Query: {
     characterEquipment: async (_, { realm, name }, { dataSources }) =>
-      dataSources.characterEquipment.getCharacterEquipment(realm, name)
+      await dataSources.characterEquipment.getCharacterEquipment(realm, name)
   }
 };

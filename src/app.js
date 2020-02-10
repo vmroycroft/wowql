@@ -2,11 +2,17 @@ const { ApolloServer } = require("apollo-server"),
   typeDefs = require("./schema"),
   resolvers = require("./resolvers"),
   BlizzardApi = require("./BlizzardApi"),
-  { CharacterEquipment } = require("./datasources");
+  {
+    CharacterProfile,
+    CharacterEquipment,
+    CharacterMedia
+  } = require("./datasources");
 
 const blizzardApi = new BlizzardApi(),
   dataSources = () => ({
-    characterEquipment: new CharacterEquipment(blizzardApi)
+    characterProfile: new CharacterProfile(blizzardApi),
+    characterEquipment: new CharacterEquipment(blizzardApi),
+    characterMedia: new CharacterMedia(blizzardApi)
   });
 
 // start the app

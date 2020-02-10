@@ -1,3 +1,5 @@
-const CharacterEquipment = require("./CharacterEquipment");
+const CharacterEquipment = require("./CharacterEquipment"),
+  CharacterProfile = require("./CharacterProfile"),
+  CharacterMedia = require("./CharacterMedia");
 
-module.exports = { CharacterEquipment };
+module.exports = { CharacterEquipment, CharacterProfile, CharacterMedia };

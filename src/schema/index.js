@@ -1,5 +1,7 @@
 const { gql } = require("apollo-server"),
-  characterEquipmentSchema = require("./character-equipment");
+  characterEquipmentSchema = require("./character-equipment"),
+  characterProfileSchema = require("./character-profile");
+characterMediaSchema = require("./character-media");
 
 const linkSchema = gql`
   type Query {
@@ -10,4 +12,9 @@ const linkSchema = gql`
   }
 `;
 
-module.exports = [linkSchema, characterEquipmentSchema];
+module.exports = [
+  linkSchema,
+  characterEquipmentSchema,
+  characterProfileSchema,
+  characterMediaSchema
+];

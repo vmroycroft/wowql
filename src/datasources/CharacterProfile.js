@@ -1,21 +1,21 @@
 /**
- * Wrapper for the Character Equipment API.
+ * Wrapper for the Character Profile API.
  */
-class CharacterEquipment {
+class CharacterProfile {
   constructor(blizzardApi) {
     this.blizzardApi = blizzardApi;
   }
 
   /**
-   * Returns a summary of the items equipped by a character.
+   * Returns a profile summary for a character.
    *
    * @param {object} obj Options object
    * @param {string} obj.realm Realm name
    * @param {string} obj.name Character name
    */
-  async getCharacterEquipment(realm, name) {
+  async getCharacterProfile(realm, name) {
     const response = await this.blizzardApi.get(
-      `/profile/wow/character/${realm.toLowerCase()}/${name.toLowerCase()}/equipment`, // TODO make variables url safe
+      `/profile/wow/character/${realm.toLowerCase()}/${name.toLowerCase()}`, // TODO make variables url safe
       "profile"
     );
 
@@ -23,4 +23,4 @@ class CharacterEquipment {
   }
 }
 
-module.exports = CharacterEquipment;
+module.exports = CharacterProfile;
