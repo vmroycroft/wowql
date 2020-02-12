@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const { ApolloServer } = require("apollo-server"),
   typeDefs = require("./schema"),
   resolvers = require("./resolvers"),
@@ -5,14 +7,16 @@ const { ApolloServer } = require("apollo-server"),
   {
     CharacterProfile,
     CharacterEquipment,
-    CharacterMedia
+    CharacterMedia,
+    CharacterReputations
   } = require("./datasources");
 
 const blizzardApi = new BlizzardApi(),
   dataSources = () => ({
     characterProfile: new CharacterProfile(blizzardApi),
     characterEquipment: new CharacterEquipment(blizzardApi),
-    characterMedia: new CharacterMedia(blizzardApi)
+    characterMedia: new CharacterMedia(blizzardApi),
+    characterReputations: new CharacterReputations(blizzardApi)
   });
 
 // start the app

@@ -1,5 +1,11 @@
 const CharacterEquipment = require("./CharacterEquipment"),
   CharacterProfile = require("./CharacterProfile"),
-  CharacterMedia = require("./CharacterMedia");
+  CharacterMedia = require("./CharacterMedia"),
+  CharacterReputations = require("./CharacterReputations");
 
-module.exports = { CharacterEquipment, CharacterProfile, CharacterMedia };
+module.exports = {
+  CharacterEquipment,
+  CharacterProfile,
+  CharacterMedia,
+  CharacterReputations
+};

@@ -16,8 +16,8 @@ class BlizzardApi extends RESTDataSource {
     this.hostname = `https://${this.region}.api.blizzard.com`;
     this.oauth2 = create({
       client: {
-        id: "58a68a446b3c4e0bb1b4bf038740a146",
-        secret: "8WUiNBjDdZa2U7aANScukuQ8I7PdLs4J"
+        id: process.env.CLIENT_ID,
+        secret: process.env.CLIENT_SECRET
       },
       auth: {
         tokenHost: `https://${this.region}.battle.net/oauth/token`
