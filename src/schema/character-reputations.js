@@ -2,8 +2,19 @@ const { gql } = require("apollo-server");
 
 const schemas = gql`
   extend type Query {
+    """
+    Character Reputations API
+
+    Returns a summary of a character's reputations.
+    """
     characterReputations(
+      """
+      The slug of the realm.
+      """
       realm: String
+      """
+      The lowercase name of the character.
+      """
       name: String
     ): CharacterReputationsResponse
   }
@@ -15,7 +26,7 @@ const schemas = gql`
   }
 
   type Reputation {
-    faction: ItemClass
+    faction: KeyNameId
     standing: Standing
   }
 

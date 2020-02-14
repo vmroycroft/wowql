@@ -2,7 +2,21 @@ const { gql } = require("apollo-server");
 
 const schemas = gql`
   extend type Query {
-    characterEquipment(realm: String, name: String): CharacterEquipmentResponse
+    """
+    Character Equipment API
+
+    Returns a summary of the items equipped by a character.
+    """
+    characterEquipment(
+      """
+      The slug of the realm.
+      """
+      realm: String
+      """
+      The lowercase name of the character.
+      """
+      name: String
+    ): CharacterEquipmentResponse
   }
 
   type CharacterEquipmentResponse {
@@ -11,40 +25,22 @@ const schemas = gql`
     equipped_items: [EquippedItem]
   }
 
-  type Links {
-    self: ItemDataKey
-  }
-
-  type Character {
-    key: ItemDataKey
-    name: String
-    id: Int
-    realm: Realm
-  }
-
-  type Realm {
-    key: ItemDataKey
-    name: String
-    id: Int
-    slug: String
-  }
-
   type EquippedItem {
-    item: ItemData
-    slot: EquippedItemDefinition
+    item: KeyId
+    slot: TypeName
     quantity: Int
     context: Int
     bonus_list: [Int]
     timewalker_level: Int
-    quality: EquippedItemDefinition
+    quality: TypeName
     name: String
     modified_appearance_id: Int
     azerite_details: AzeriteDetails
-    media: ItemData
-    item_class: ItemClass
-    item_subclass: ItemClass
-    inventory_type: EquippedItemDefinition
-    binding: EquippedItemDefinition
+    media: KeyId
+    item_class: KeyNameId
+    item_subclass: KeyNameId
+    inventory_type: TypeName
+    binding: TypeName
     armor: EquippedItemArmor
     weapon: Weapon
     unique_equipped: String
@@ -60,24 +56,9 @@ const schemas = gql`
     name_description: EquippedItemDisplay
   }
 
-  type ItemData {
-    key: ItemDataKey
+  type KeyId {
+    key: Key
     id: Int
-  }
-
-  type ItemClass {
-    key: ItemDataKey
-    name: String
-    id: Int
-  }
-
-  type ItemDataKey {
-    href: String
-  }
-
-  type EquippedItemDefinition {
-    type: String
-    name: String
   }
 
   type AzeriteDetails {
@@ -93,8 +74,8 @@ const schemas = gql`
     rank: Int
     main_spell_tooltip: SpellTooltip
     passive_spell_tooltip: SpellTooltip
-    essence: ItemClass
-    media: ItemData
+    essence: KeyNameId
+    media: KeyId
   }
 
   type SelectedPower {
@@ -105,7 +86,7 @@ const schemas = gql`
   }
 
   type SpellTooltip {
-    spell: ItemClass
+    spell: KeyNameId
     description: String
     cast_time: String
     range: String
@@ -126,7 +107,7 @@ const schemas = gql`
     min_value: Int
     max_value: Int
     display_string: String
-    damage_class: EquippedItemDefinition
+    damage_class: TypeName
   }
 
   type EquippedItemDisplay {
@@ -142,7 +123,7 @@ const schemas = gql`
   }
 
   type EquippedItemStat {
-    type: EquippedItemDefinition
+    type: TypeName
     value: Int
     is_equip_bonus: Boolean
     is_negated: Boolean
@@ -154,7 +135,7 @@ const schemas = gql`
   }
 
   type Transmog {
-    item: ItemClass
+    item: KeyNameId
     display_string: String
     item_modified_appearance_id: Int
   }

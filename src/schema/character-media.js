@@ -2,7 +2,21 @@ const { gql } = require("apollo-server");
 
 const schemas = gql`
   extend type Query {
-    characterMedia(realm: String, name: String): CharacterMediaResponse
+    """
+    Character Media API
+
+    Returns a summary of the media assets available for a character (such as an avatar render).
+    """
+    characterMedia(
+      """
+      The slug of the realm.
+      """
+      realm: String
+      """
+      The lowercase name of the character.
+      """
+      name: String
+    ): CharacterMediaResponse
   }
 
   type CharacterMediaResponse {
