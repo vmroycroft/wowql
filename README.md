@@ -27,7 +27,7 @@ Some WoW endpoints still need to be implemented. See the `Implementation Status`
 3. Start the server & watch source
 
    ```
-   npm run serve
+   npm start
    ```
 
 ## GraphQL Playground
