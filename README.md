@@ -5,6 +5,8 @@
 
 A GraphQL wrapper for the World of Warcraft Game Data APIs and Profile APIs. Built with [Apollo Server](https://www.apollographql.com/docs/apollo-server/).
 
+Some WoW endpoints still need to be implemented. See the `Implementation Status` section for the WoW endpoints that have been implemented.
+
 ## Quick Start
 
 1. Install dependencies
