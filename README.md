@@ -57,7 +57,7 @@ npm run graphdoc
 
 ## Implementation Status
 
-The GraphQL implementaiton status of each WoW API endpoint is listed below.
+The GraphQL implementation status of each WoW API endpoint is listed below.
 
 ### Game Data APIs
 
