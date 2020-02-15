@@ -15,7 +15,9 @@ class CharacterMedia {
    */
   async getCharacterMedia(realm, name) {
     const response = await this.blizzardApi.get(
-      `/profile/wow/character/${realm.toLowerCase()}/${name.toLowerCase()}/character-media`, // TODO make variables url safe
+      encodeURI(
+        `/profile/wow/character/${realm.toLowerCase()}/${name.toLowerCase()}/character-media`
+      ),
       "profile"
     );
 

@@ -15,7 +15,9 @@ class CharacterProfile {
    */
   async getCharacterProfile(realm, name) {
     const response = await this.blizzardApi.get(
-      `/profile/wow/character/${realm.toLowerCase()}/${name.toLowerCase()}`, // TODO make variables url safe
+      encodeURI(
+        `/profile/wow/character/${realm.toLowerCase()}/${name.toLowerCase()}`
+      ),
       "profile"
     );
 
