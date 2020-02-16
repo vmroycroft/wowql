@@ -1,5 +1,6 @@
 const { gql } = require("apollo-server"),
   commonSchema = require("./common"),
+  oauth2Schema = require("./oauth2"),
   characterEquipmentSchema = require("./character-equipment"),
   characterProfileSchema = require("./character-profile"),
   characterMediaSchema = require("./character-media"),
@@ -16,6 +17,7 @@ const linkSchema = gql`
 
 module.exports = [
   linkSchema,
+  oauth2Schema,
   commonSchema,
   characterEquipmentSchema,
   characterProfileSchema,
