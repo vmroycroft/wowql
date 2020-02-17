@@ -1,34 +1,37 @@
 {
-  "name": "wowql",
-  "version": "0.3.0",
-  "description": "A GraphQL wrapper for the World of Warcraft Game Data APIs and Profile APIs.",
-  "private": true,
-  "license": "MIT",
-  "homepage": "https://github.com/vmroycroft/wowql#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vmroycroft/wowql.git"
-  },
-  "main": "app.js",
-  "scripts": {
-    "start": "nodemon src/app.js",
-    "graphdoc": "graphdoc",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "@2fd/graphdoc": "^2.4.0",
-    "apollo-datasource-rest": "^0.7.0",
-    "apollo-server": "^2.6.6",
-    "axios": "^0.19.2",
-    "dotenv": "^8.2.0",
-    "graphql": "^14.3.1",
-    "simple-oauth2": "^3.3.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.19.1"
-  },
-  "graphdoc": {
-    "endpoint": "http://localhost:4000",
-    "output": "./docs"
-  }
+	"name": "wowql",
+	"version": "0.3.0",
+	"description": "A GraphQL wrapper for the World of Warcraft Game Data APIs and Profile APIs.",
+	"private": true,
+	"license": "MIT",
+	"homepage": "https://github.com/vmroycroft/wowql#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vmroycroft/wowql.git"
+	},
+	"main": "app.js",
+	"scripts": {
+		"start": "nodemon src/app.js",
+		"graphdoc": "graphdoc",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"@2fd/graphdoc": "^2.4.0",
+		"apollo-datasource-rest": "^0.7.0",
+		"apollo-server-express": "^2.10.1",
+		"axios": "^0.19.2",
+		"dotenv": "^8.2.0",
+		"express-session": "^1.17.0",
+		"graphql": "^14.3.1",
+		"passport": "^0.4.1",
+		"passport-bnet": "^2.0.0",
+		"uuid": "^3.4.0"
+	},
+	"devDependencies": {
+		"nodemon": "^1.19.1"
+	},
+	"graphdoc": {
+		"endpoint": "http://localhost:4000",
+		"output": "./docs"
+	}
 }
