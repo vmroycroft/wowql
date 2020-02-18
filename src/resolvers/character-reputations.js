@@ -1,9 +1,14 @@
 module.exports = {
   Query: {
-    characterReputations: async (_, { realm, name }, { dataSources }) =>
+    characterReputations: async (
+      _,
+      { realm, name },
+      { dataSources, getUser }
+    ) =>
       await dataSources.characterReputations.getCharacterReputations(
         realm,
-        name
+        name,
+        getUser
       )
   }
 };
