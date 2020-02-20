@@ -165,7 +165,7 @@ The GraphQL implementation status of each WoW API endpoint is listed below.
 
 | Name                                     | Endpoint                                                                                     | Status             |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------ |
-| Account Profile Summary                  | /profile/user/wow                                                                            | ![red] Not Started |
+| Account Profile Summary                  | /profile/user/wow                                                                            | ![green] Completed |
 | Protected Character Profile Summary      | /profile/user/wow/protected-character/{realmId}-{characterId}                                | ![red] Not Started |
 | Account Collections Index                | /profile/user/wow/collections                                                                | ![red] Not Started |
 | Account Mounts Collections Summary       | /profile/user/wow/collections/mounts                                                         | ![red] Not Started |
