@@ -25,6 +25,7 @@
 		"graphql": "^14.3.1",
 		"passport": "^0.4.1",
 		"passport-bnet": "^2.0.0",
+		"simple-oauth2": "^3.3.0",
 		"uuid": "^3.4.0"
 	},
 	"devDependencies": {
