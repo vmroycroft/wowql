@@ -29,6 +29,7 @@ app.use(
 		origin: true
 	})
 );
+
 app.use(
 	session({
 		genid: req => uuid(),
@@ -45,15 +46,15 @@ app.get('/auth/bnet', passport.authenticate('bnet'));
 app.get(
 	'/auth/bnet/callback',
 	passport.authenticate('bnet', {
-		successRedirect: 'http://localhost:8080/#/home',
-		failureRedirect: 'http://localhost:8080/'
+		// TODO pass redirect urls from client
+		successRedirect: process.env.OAUTH_SUCCESS_REDIRECT,
+		failureRedirect: process.env.OAUTH_FAILURE_REDIRECT
 	})
 );
 
 app.get('/logout', function(req, res) {
 	req.logout();
-	// req.session.destroy();
-	// res.redirect("http://localhost:8080");
+	// TODO end session on client
 });
 
 init();
@@ -80,6 +81,6 @@ async function init() {
 	server.applyMiddleware({ app, cors: false, path: '/api' });
 
 	app.listen({ port: process.env.PORT }, () => {
-		console.log(`🚀  Server ready at http://localhost:${process.env.PORT}`);
+		console.log(`🚀  Server ready at http://localhost:${process.env.PORT}${server.graphqlPath}`);
 	});
 }

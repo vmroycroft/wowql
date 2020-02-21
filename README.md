@@ -17,11 +17,19 @@ Some WoW endpoints still need to be implemented. See the `Implementation Status`
 
 2. Update environment variables
 
-   Rename `.env.example` to `.env` and set your Client ID and Client Secret from your [Blizzard Battle.net](https://develop.battle.net/) OAuth client.
+   Rename `.env.example` to `.env` and set the following variables:
+
+   - The port to run the server on
+   - Your Client ID and Client Secret from your [Blizzard Battle.net](https://develop.battle.net/) OAuth client
+   - The URL to redirect clients to on a successful login
+   - The URL to redirect clients to on a failed login
 
    ```
-   CLIENT_ID="your client id"
-   CLIENT_SECRET="your client secret"
+   PORT=1234
+   CLIENT_ID="client id"
+   CLIENT_SECRET="client secret"
+   OAUTH_SUCCESS_REDIRECT="successful login redirect url"
+   OAUTH_FAILURE_REDIRECT="failed login redirect url"
    ```
 
 3. Start the server & watch source
@@ -34,7 +42,7 @@ Some WoW endpoints still need to be implemented. See the `Implementation Status`
 
 Apollo Server provides [GraphQL Playground](https://github.com/prisma-labs/graphql-playground) for you to test your GraphQL queries before implementing them in client code.
 
-With your server running, go to http://localhost:4000 in your browser to open GraphQL Playground. It includes:
+With your server running, go to http://localhost:4000/api in your browser to open GraphQL Playground. It includes:
 
 - A text area for writing queries
 - A play button to execute queries
