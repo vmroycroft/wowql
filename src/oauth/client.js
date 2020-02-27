@@ -20,6 +20,7 @@ class OAuthClient {
 		if (this.token === null || this.token.expired()) {
 			const token = await this.client.clientCredentials.getToken();
 			this.token = this.client.accessToken.create(token);
+			console.log(`App token: ${this.token.token.access_token}`);
 			return this.token.token.access_token;
 		} else {
 			return this.token.token.access_token;

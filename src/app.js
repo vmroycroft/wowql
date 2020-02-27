@@ -2,6 +2,8 @@ require('dotenv').config();
 
 const express = require('express'),
 	session = require('express-session'),
+	RedisStore = require('connect-redis')(session),
+	redis = require('redis'),
 	uuid = require('uuid/v4'),
 	cors = require('cors'),
 	passport = require('./oauth/passport'),
@@ -11,6 +13,13 @@ const express = require('express'),
 	typeDefs = require('./schema'),
 	resolvers = require('./resolvers'),
 	{ AccountProfile, CharacterProfile, CharacterEquipment, CharacterMedia, CharacterReputations } = require('./datasources');
+
+const redisSessionStore = new RedisStore({
+	client: redis.createClient({
+		host: process.env.REDIS_HOST,
+		port: process.env.REDIS_PORT
+	})
+});
 
 const app = express(),
 	oauthClient = new OauthClient(),
@@ -35,7 +44,8 @@ app.use(
 		genid: req => uuid(),
 		secret: 'asdf',
 		resave: false,
-		saveUninitialized: false
+		saveUninitialized: false,
+		store: redisSessionStore
 	})
 );
 

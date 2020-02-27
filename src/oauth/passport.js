@@ -8,7 +8,7 @@ const bnetOptions = {
 		callbackURL: 'http://localhost:4000/auth/bnet/callback'
 	},
 	bnetCallback = (accessToken, refreshToken, profile, done) => {
-		console.log(accessToken);
+		console.log(`User token: ${accessToken}`);
 		process.nextTick(() => {
 			return done(null, profile);
 		});

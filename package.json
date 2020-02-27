@@ -20,11 +20,13 @@
 		"apollo-datasource-rest": "^0.7.0",
 		"apollo-server-express": "^2.10.1",
 		"axios": "^0.19.2",
+		"connect-redis": "^4.0.4",
 		"dotenv": "^8.2.0",
 		"express-session": "^1.17.0",
 		"graphql": "^14.3.1",
 		"passport": "^0.4.1",
 		"passport-bnet": "^2.0.0",
+		"redis": "^3.0.2",
 		"simple-oauth2": "^3.3.0",
 		"uuid": "^3.4.0"
 	},
