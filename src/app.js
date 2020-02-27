@@ -17,7 +17,8 @@ const express = require('express'),
 const redisSessionStore = new RedisStore({
 	client: redis.createClient({
 		host: process.env.REDIS_HOST,
-		port: process.env.REDIS_PORT
+		port: process.env.REDIS_PORT,
+		password: process.env.REDIS_PASSWORD
 	})
 });
 
@@ -53,6 +54,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/auth/bnet', passport.authenticate('bnet'));
+
 app.get(
 	'/auth/bnet/callback',
 	passport.authenticate('bnet', {
@@ -73,7 +75,6 @@ async function init() {
 	const appToken = await oauthClient.getToken();
 	const appUser = { token: appToken };
 
-	// set up apollo server for graphql api requests
 	const server = new ApolloServer({
 		typeDefs,
 		resolvers,
