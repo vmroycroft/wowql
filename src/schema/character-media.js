@@ -22,9 +22,7 @@ const schemas = gql`
 	type CharacterMediaResponse {
 		_links: Links
 		character: Character
-		avatar_url: String
-		bust_url: String
-		render_url: String
+		assets: [KeyValue]
 	}
 `;
 

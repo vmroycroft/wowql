@@ -1,9 +1,11 @@
-const passport = require('passport'),
-	BnetStrategy = require('passport-bnet').Strategy;
+require('dotenv').config();
+
+const passport = require('passport');
+const BnetStrategy = require('passport-bnet').Strategy;
 
 const bnetOptions = {
-		clientID: process.env.CLIENT_ID,
-		clientSecret: process.env.CLIENT_SECRET,
+		clientID: process.env.BNET_ID,
+		clientSecret: process.env.BNET_SECRET,
 		scope: 'wow.profile',
 		callbackURL: 'http://localhost:4000/auth/bnet/callback'
 	},

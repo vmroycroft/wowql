@@ -38,7 +38,13 @@ Some WoW endpoints still need to be implemented. See the `Implementation Status`
    - The URL to redirect clients to on a successful login
    - The URL to redirect clients to on a failed login
 
-3. Start the server
+3. Start Redis in a Docker container
+
+   ```
+   docker-compose up -d
+   ```
+
+4. Start the server
 
    ```
    npm start

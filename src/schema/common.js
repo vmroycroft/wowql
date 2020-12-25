@@ -29,6 +29,11 @@ const schemas = gql`
 		href: String
 	}
 
+	type KeyValue {
+		key: String
+		value: String
+	}
+
 	type TypeName {
 		type: String
 		name: String
