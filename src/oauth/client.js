@@ -1,9 +1,11 @@
+require('dotenv').config();
+
 const oauth2 = require('simple-oauth2');
 
 const credentials = {
 	client: {
-		id: process.env.CLIENT_ID,
-		secret: process.env.CLIENT_SECRET
+		id: process.env.BNET_ID,
+		secret: process.env.BNET_SECRET
 	},
 	auth: {
 		tokenHost: 'https://us.battle.net'

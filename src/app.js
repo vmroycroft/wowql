@@ -1,37 +1,45 @@
 require('dotenv').config();
 
-const express = require('express'),
-	session = require('express-session'),
-	RedisStore = require('connect-redis')(session),
-	redis = require('redis'),
-	uuid = require('uuid/v4'),
-	cors = require('cors'),
-	passport = require('./oauth/passport'),
-	OauthClient = require('./oauth/client'),
-	BlizzardApi = require('./BlizzardApi'),
-	{ ApolloServer } = require('apollo-server-express'),
-	typeDefs = require('./schema'),
-	resolvers = require('./resolvers'),
-	{ AccountProfile, CharacterProfile, CharacterEquipment, CharacterMedia, CharacterReputations } = require('./datasources');
+const express = require('express');
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
+const redis = require('redis');
+const uuid = require('uuid/v4');
+const cors = require('cors');
+const passport = require('./oauth/passport');
+const OauthClient = require('./oauth/client');
+const BlizzardApi = require('./BlizzardApi');
+const { ApolloServer } = require('apollo-server-express');
+const typeDefs = require('./schema');
+const resolvers = require('./resolvers');
+
+const {
+	AccountProfile,
+	CharacterProfile,
+	CharacterEquipment,
+	CharacterMedia,
+	CharacterReputations
+} = require('./datasources');
 
 const redisSessionStore = new RedisStore({
 	client: redis.createClient({
 		host: process.env.REDIS_HOST,
-		port: process.env.REDIS_PORT,
-		password: process.env.REDIS_PASSWORD
+		port: process.env.REDIS_PORT
+		// password: process.env.REDIS_PASSWORD
 	})
 });
 
-const app = express(),
-	oauthClient = new OauthClient(),
-	blizzardApi = new BlizzardApi(),
-	dataSources = () => ({
-		accountProfile: new AccountProfile(blizzardApi),
-		characterProfile: new CharacterProfile(blizzardApi),
-		characterEquipment: new CharacterEquipment(blizzardApi),
-		characterMedia: new CharacterMedia(blizzardApi),
-		characterReputations: new CharacterReputations(blizzardApi)
-	});
+const app = express();
+const oauthClient = new OauthClient();
+const blizzardApi = new BlizzardApi();
+
+const dataSources = () => ({
+	accountProfile: new AccountProfile(blizzardApi),
+	characterProfile: new CharacterProfile(blizzardApi),
+	characterEquipment: new CharacterEquipment(blizzardApi),
+	characterMedia: new CharacterMedia(blizzardApi),
+	characterReputations: new CharacterReputations(blizzardApi)
+});
 
 app.use(
 	cors({
@@ -42,7 +50,7 @@ app.use(
 
 app.use(
 	session({
-		genid: req => uuid(),
+		genid: (req) => uuid(),
 		secret: 'asdf',
 		resave: false,
 		saveUninitialized: false,
@@ -64,7 +72,7 @@ app.get(
 	})
 );
 
-app.get('/logout', function(req, res) {
+app.get('/logout', function (req, res) {
 	req.logout();
 	// TODO end session on client
 });
