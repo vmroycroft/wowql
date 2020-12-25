@@ -10,7 +10,7 @@
 	"dependencies": {
 		"@2fd/graphdoc": "^2.4.0",
 		"apollo-datasource-rest": "^0.7.0",
-		"apollo-server-express": "^2.10.1",
+		"apollo-server-express": "^2.14.2",
 		"axios": "^0.19.2",
 		"connect-redis": "^4.0.4",
 		"dotenv": "^8.2.0",
